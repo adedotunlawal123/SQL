@@ -1,0 +1,26 @@
+
+Problem Statement
+
+https://leetcode.com/problems/market-analysis-i/
+
+
+Problem Solution
+
+WITH year_2019 AS (
+SELECT *
+FROM Orders
+WHERE YEAR(order_date) = 2019 )
+
+SELECT y_2.buyer_id, U.join_date, count(y_2.buyer_id) AS orders_in_2019
+FROM year_2019 AS y_2
+JOIN Users AS U
+ON U.user_id = y_2.buyer_id
+GROUP BY buyer_id, join_date
+UNION
+SELECT U.user_id AS buyer_id, U.join_date, 0 AS orders_in_2019
+FROM Users AS U
+WHERE user_id  NOT IN (SELECT y_2.buyer_id
+FROM year_2019 AS y_2
+JOIN Users AS U
+ON U.user_id = y_2.buyer_id
+GROUP BY buyer_id, join_date)
