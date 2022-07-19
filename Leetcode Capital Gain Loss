@@ -1,0 +1,18 @@
+Problem Statemenet
+
+https://leetcode.com/problems/capital-gainloss/
+
+
+
+Problem Solution
+
+WITH temp AS(SELECT *, DENSE_RANK() OVER(PARTITION BY stock_name) AS 'RANK'
+FROM Stocks)
+
+
+#use partition to add columns of same stock_name AND SELECT the necessary columns
+SELECT DISTINCT(stock_name), SUM(signed_price) OVER(PARTITION BY stock_name) AS capital_gain_loss
+FROM(SELECT *, 
+CASE WHEN operation = 'Buy' THEN (-1*price)
+ELSE price END AS signed_price
+FROM temp) AS temp_temp
