@@ -1,0 +1,16 @@
+
+Problem Statement
+
+https://leetcode.com/problems/exchange-seats/
+
+
+Problem Solution
+
+SELECT
+      CASE WHEN MOD(id, 2) = 0 THEN id - 1
+           WHEN MOD(id, 2) != 0 AND id = cnt THEN id
+           ELSE id + 1 END AS id,
+           student
+FROM (SELECT COUNT(*) AS cnt
+       FROM Seat) AS cnt_table, Seat
+ORDER BY id
