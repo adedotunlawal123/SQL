@@ -1,0 +1,14 @@
+Problem Statement
+
+https://leetcode.com/problems/duplicate-emails/
+
+
+Problem Solution
+
+SELECT email AS Email
+FROM(
+    SELECT COUNT(email) AS num, email
+    FROM Person
+    GROUP BY email
+) AS TEMP
+WHERE num > 1
