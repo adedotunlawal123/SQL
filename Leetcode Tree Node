@@ -1,0 +1,15 @@
+
+Problem Statement
+
+https://leetcode.com/problems/tree-node/
+
+
+Problem Solution
+
+SELECT id,
+CASE WHEN p_id IS null THEN 'Root'
+     WHEN  id IN (SELECT p_id FROM tree WHERE p_id IS NOT null) THEN 'Inner'
+     ELSE 'Leaf' END AS type
+     
+FROM Tree
+ORDER BY id
