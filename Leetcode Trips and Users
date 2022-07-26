@@ -1,0 +1,32 @@
+Problem Statement
+
+https://leetcode.com/problems/trips-and-users/
+
+
+Problem Solution
+
+WITH banned AS (SELECT users_id
+FROM Users
+WHERE banned = 'Yes'),
+
+Trips_by_unbanned AS (SELECT request_at , COUNT(client_id) AS cnt_1
+FROM Trips
+WHERE client_id NOT IN(SELECT * FROM banned)
+AND driver_id NOT IN(SELECT * FROM banned)
+GROUP BY request_at
+HAVING request_at BETWEEN '2013-10-01' AND '2013-10-03'),
+
+
+Trips_by_unbanned_cancelled AS (SELECT request_at , COUNT(client_id) AS cnt_2
+FROM Trips
+WHERE client_id NOT IN(SELECT * FROM banned)
+AND status != 'completed'
+AND driver_id NOT IN(SELECT * FROM banned)
+GROUP BY request_at
+HAVING request_at BETWEEN '2013-10-01' AND '2013-10-03')
+
+
+SELECT T_1.request_at AS Day, ROUND(IFNULL(cnt_2/cnt_1, 0.00), 2) AS 'Cancellation Rate'
+FROM Trips_by_unbanned AS T_1
+LEFT OUTER JOIN Trips_by_unbanned_cancelled AS T_2
+ON T_1.request_at = T_2.request_at
