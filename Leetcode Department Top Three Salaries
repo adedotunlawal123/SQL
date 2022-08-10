@@ -1,0 +1,15 @@
+Problem Statement
+
+https://leetcode.com/problems/department-top-three-salaries/
+
+Problem Solution
+
+WITH rkn AS (SELECT name, salary, departmentId,
+DENSE_RANK() OVER(PARTITION BY departmentId ORDER BY salary DESC) AS r
+FROM Employee)
+
+SELECT dpt.name AS Department, rkn.name AS Employee, rkn.salary AS Salary
+FROM rkn
+JOIN Department AS dpt
+ON rkn.departmentId = dpt.id
+WHERE r < 4
