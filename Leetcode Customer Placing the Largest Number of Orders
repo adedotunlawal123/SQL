@@ -1,0 +1,12 @@
+Problem Statement
+
+https://leetcode.com/problems/customer-placing-the-largest-number-of-orders/
+
+Problem Solution
+
+SELECT customer_number
+FROM (SELECT COUNT(customer_number) AS cnt, customer_number
+     FROM Orders
+     GROUP BY customer_number
+     ORDER BY cnt DESC) AS tmp
+LIMIT 1
