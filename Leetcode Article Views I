@@ -1,0 +1,15 @@
+Problem Statement
+
+https://leetcode.com/problems/article-views-i/
+
+Problem Solution
+
+WITH temp AS (SELECT 
+CASE WHEN author_id = viewer_id THEN author_id
+ELSE 0 END AS id
+FROM Views)
+
+SELECT DISTINCT id
+FROM TEMP
+WHERE id != 0
+ORDER BY id ASC
