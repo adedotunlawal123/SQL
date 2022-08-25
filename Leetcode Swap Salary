@@ -1,0 +1,12 @@
+Problem Statement
+
+https://leetcode.com/problems/swap-salary/
+
+Problem Solution
+
+UPDATE salary
+SET
+    sex = CASE sex
+        WHEN 'm' THEN 'f'
+        ELSE 'm'
+    END;
