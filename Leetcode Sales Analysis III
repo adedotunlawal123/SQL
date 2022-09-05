@@ -2,7 +2,6 @@ Problem Statement
 
 https://leetcode.com/problems/sales-analysis-iii/
 
-
 Problem Solution
 
 SELECT product_id, product_name
