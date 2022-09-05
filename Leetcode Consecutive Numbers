@@ -1,7 +1,6 @@
 Problem Statement
 https://leetcode.com/problems/consecutive-numbers/
 
-
 Problem Solution
 
 SELECT DISTINCT(l1.num) as ConsecutiveNums
