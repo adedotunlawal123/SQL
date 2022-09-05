@@ -2,7 +2,6 @@ Problem Statement
 
 https://leetcode.com/problems/duplicate-emails/
 
-
 Problem Solution
 
 SELECT email AS Email
