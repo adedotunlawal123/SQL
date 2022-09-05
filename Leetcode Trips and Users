@@ -2,7 +2,6 @@ Problem Statement
 
 https://leetcode.com/problems/trips-and-users/
 
-
 Problem Solution
 
 WITH banned AS (SELECT users_id
