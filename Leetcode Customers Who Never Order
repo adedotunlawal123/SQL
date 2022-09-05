@@ -2,7 +2,6 @@ Problem Statement
 
 https://leetcode.com/problems/customers-who-never-order/submissions/
 
-
 Problem Solution
 
 SELECT name AS Customers
