@@ -2,7 +2,6 @@ Problem Solution
 
 https://leetcode.com/problems/employees-earning-more-than-their-managers/
 
-
 Problem Statement
 
 SELECT E_1.name AS Employee
