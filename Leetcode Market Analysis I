@@ -2,7 +2,6 @@ Problem Statement
 
 https://leetcode.com/problems/market-analysis-i/
 
-
 Problem Solution
 
 WITH year_2019 AS (
